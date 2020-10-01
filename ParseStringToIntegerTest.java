@@ -6,34 +6,40 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 
-
 class ParseStringToIntegerTest {
     @Test
-    public void ParseCorrect (){
-        ArrayList<Integer> Array = new ArrayList<>();
-        ArrayList<Integer> TrueArray = new ArrayList<>();
-        TrueArray.add(2);TrueArray.add(5);TrueArray.add(5);TrueArray.add(4);TrueArray.add(3);
-        ParseStringToInteger Parser = new ParseStringToInteger();
-        Parser.Parse("2 5             5.000      4.00   3.0", Array);
-        Assertions.assertEquals(Array,TrueArray);
+    public void ParseCorrect() {
+        ArrayList<Integer> array = new ArrayList<>();
+        ArrayList<Integer> trueArray = new ArrayList<>();
+        trueArray.add(2);
+        trueArray.add(5);
+        trueArray.add(5);
+        trueArray.add(4);
+        trueArray.add(3);
+        ParseStringToInteger parser = new ParseStringToInteger();
+        array = parser.Parse("2 5 5.000 4.00 3.0");
+        Assertions.assertEquals(array, trueArray);
     }
+
     @Test
-    public void ParseDouble (){
-        ArrayList<Integer> Array = new ArrayList<>();
-        ParseStringToInteger Parser = new ParseStringToInteger();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Parser.Parse("2 5 5.00501 4.00 3.0", Array));
+    public void ParseDouble() {
+        ArrayList<Integer> array = new ArrayList<>();
+        ParseStringToInteger parser = new ParseStringToInteger();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> parser.Parse("2 5 5.00501 4.00 3.0"));
     }
+
     @Test
-    public void ParseExtraPoint(){
-        ArrayList<Integer> Array = new ArrayList<>();
-        ParseStringToInteger Parser = new ParseStringToInteger();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Parser.Parse("2 5 5.000.0 4.00 3.0", Array));
+    public void ParseExtraPoint() {
+        ArrayList<Integer> array = new ArrayList<>();
+        ParseStringToInteger parser = new ParseStringToInteger();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> parser.Parse("2 5 5.000.0 4.00 3.0"));
     }
+
     @Test
-    public void ParseInvalidCharacters(){
-        ArrayList<Integer> Array = new ArrayList<>();
-        ParseStringToInteger Parser = new ParseStringToInteger();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Parser.Parse("2 Five 5.000.0 4.00 3.0", Array));
+    public void ParseInvalidCharacters() {
+        ArrayList<Integer> array = new ArrayList<>();
+        ParseStringToInteger parser = new ParseStringToInteger();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> parser.Parse("2 Five 5.000.0 4.00 3.0"));
     }
 
 }
