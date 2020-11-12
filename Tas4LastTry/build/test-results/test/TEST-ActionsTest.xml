@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ActionsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-12T17:39:58" hostname="DESKTOP-D85URO8" time="0.029">
+  <properties/>
+  <testcase name="testDownloadFilePathIsNull()" classname="ActionsTest" time="0.029"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

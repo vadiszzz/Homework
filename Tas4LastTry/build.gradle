@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
+    compile 'com.yandex.android:disk-restapi-sdk:1.0'
+    testImplementation 'org.junit.platform:junit-platform-commons:1.5.2'
+}
+
+test {
+    useJUnitPlatform()
+
+}
