@@ -5,6 +5,14 @@ import org.junit.jupiter.api.Test;
 
 public class HashTTest {
     @Test
+    public void testCapacityNegative(){
+        Assertions.assertThrows(IllegalArgumentException.class,() -> new HashT<Integer, Integer>(-2));
+    }
+    @Test
+    public void testFillRatioNegative(){
+        Assertions.assertThrows(IllegalArgumentException.class,() -> new HashT<Integer, Integer>(2,-2));
+    }
+    @Test
     public void testIsEmptyForEmptyTable(){
         HashT<Integer,Integer> testTable= new HashT<Integer, Integer>(5);
         Assertions.assertTrue(testTable.isEmpty());

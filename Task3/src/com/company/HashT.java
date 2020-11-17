@@ -9,6 +9,12 @@ public class HashT<type, V> {
     private int size, capacity;
 
     public HashT(int capacity, float fillRatio) {
+        if ((fillRatio>=1)||(fillRatio<=0)){
+            throw new IllegalArgumentException("Fill Ratio must be >0 and <1");
+        }
+        if (capacity<=0){
+            throw new IllegalArgumentException("Capacity must be positive");
+        }
         table = new ArrayList<>();
         this.fillRatio = fillRatio;
         this.capacity = capacity;
@@ -19,6 +25,9 @@ public class HashT<type, V> {
     }
 
     public HashT(int capacity) {
+        if (capacity<=0){
+            throw new IllegalArgumentException("Capacity must be positive");
+        }
         table = new ArrayList<>();
         fillRatio = 0.75f;
         this.capacity = capacity;
