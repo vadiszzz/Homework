@@ -12,8 +12,9 @@ repositories {
 
 dependencies {
 
-    testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
+    testCompile('org.junit.jupiter:junit-jupiter:5.6.0')
     compile 'com.yandex.android:disk-restapi-sdk:1.0'
+    compile 'org.mockito:mockito-core:1.+'
     testImplementation 'org.junit.platform:junit-platform-commons:1.5.2'
 }
 
