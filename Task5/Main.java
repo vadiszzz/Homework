@@ -6,7 +6,7 @@ import java.io.FileWriter;
 public class Main {
 
     public static void main(String[] args) {
-        long time = 50000000;
+        long time = 5000000;
         ThreadFactory threadFactory = new ThreadFactory();
         String path = System.getProperty("user.home") + File.separator + "Documents";
         path += File.separator + "Log Folder";
@@ -19,11 +19,9 @@ public class Main {
             c[i] = Math.random() * 1000;
         }
         int iter = threadResourcePool.size;
-        Thread[] threads = new Thread[iter];
         for (int i =0;i<iter;i++){
-            QuadraticSolver quadraticSolver = new QuadraticSolver(a,b,c,fileWriterResourcePool,i*10000/iter,(i+1)*10000/iter);
-            threads[i] = new Thread(quadraticSolver);
-            threads[i].start();
+            QuadraticSolver quadraticSolver = new QuadraticSolver(a,b,c,fileWriterResourcePool,i*10000/iter,(i+1)*10000/iter,threadResourcePool);
+            quadraticSolver.start(quadraticSolver);
         }
     }
 }

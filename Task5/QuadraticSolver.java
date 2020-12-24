@@ -8,15 +8,17 @@ import static java.lang.Math.sqrt;
 public class QuadraticSolver implements Runnable {
     double[] a, b, c;
     int first,last;
+    ResourcePool<Thread> threadResourcePool;
     ResourcePool<FileWriter> fileWriterResourcePool;
 
-    public QuadraticSolver(double[] a, double[] b, double[] c, ResourcePool<FileWriter> fileWriterResourcePool,int first, int last) {
+    public QuadraticSolver(double[] a, double[] b, double[] c, ResourcePool<FileWriter> fileWriterResourcePool,int first, int last,ResourcePool<Thread> threadResourcePool) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.first= first;
         this.last = last;
         this.fileWriterResourcePool = fileWriterResourcePool;
+        this.threadResourcePool = threadResourcePool;
     }
 
 
@@ -28,9 +30,15 @@ public class QuadraticSolver implements Runnable {
             for (int i =first;i<last;i++){
                 fileWriter.write(solve(a[i],b[i],c[i]));
             }
+            fileWriterResourcePool.dropResource(fileWriter);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+    public void start(Runnable runnable) {
+        Thread thread = threadResourcePool.getResource().getData();
+        runnable.run();
+        threadResourcePool.dropResource(thread);
     }
 
     public String solve(double a, double b, double c){

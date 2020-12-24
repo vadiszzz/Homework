@@ -67,7 +67,7 @@ public class ResourcePool<type> {
         }
         return null;
     }
-    public void refResource(type data) {
+    public void dropResource(type data) {
         if (data==null){
             throw new IllegalArgumentException("Resource is null");
         }

@@ -29,8 +29,7 @@ public class FileFactory implements ResourceFactory<FileWriter> {
         Integer newFileId = id.incrementAndGet();
         String newFileName = path + "\\" + newFileId.toString() + ".txt";
         try{
-            FileWriter fileWriter = new FileWriter(newFileName);
-            return fileWriter;
+            return new FileWriter(newFileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
