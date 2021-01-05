@@ -23,15 +23,15 @@ public class FileFactory implements ResourceFactory<FileWriter> {
             try {
                 Files.createDirectory(pathToCreate);
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
         Integer newFileId = id.incrementAndGet();
         String newFileName = path + "\\" + newFileId.toString() + ".txt";
-        try{
+        try {
             return new FileWriter(newFileName);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return null;
     }

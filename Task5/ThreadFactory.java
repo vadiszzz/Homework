@@ -1,7 +1,7 @@
 package com.company;
 
 public class ThreadFactory implements ResourceFactory<Thread> {
-    public Thread create(){
+    public Thread create() {
         return new Thread();
     }
 

@@ -3,10 +3,12 @@ package com.company;
 public class Term<type, Long> {
     private type data;
     private long time;
-    public Term(type data,long time){
+
+    public Term(type data, long time) {
         this.data = data;
         this.time = time;
     }
+
     public type getData() {
         return this.data;
     }

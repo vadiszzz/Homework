@@ -19,8 +19,8 @@ public class Main {
             c[i] = Math.random() * 1000;
         }
         int iter = threadResourcePool.size;
-        for (int i =0;i<iter;i++){
-            QuadraticSolver quadraticSolver = new QuadraticSolver(a,b,c,fileWriterResourcePool,i*10000/iter,(i+1)*10000/iter,threadResourcePool);
+        for (int i = 0; i < iter; i++) {
+            QuadraticSolver quadraticSolver = new QuadraticSolver(a, b, c, fileWriterResourcePool, i * 10000 / iter, (i + 1) * 10000 / iter, threadResourcePool);
             quadraticSolver.start(quadraticSolver);
         }
     }
